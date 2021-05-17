@@ -7,13 +7,11 @@ services:
       - DISPLAY=${DISPLAY}
       - JAVA_TOOL_OPTIONS=${WEKA_JAVA_OPTS}
       - CLASSPATH=${WEKA_CLASSPATH}
-      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ${WEKA_DATA_DIR:-.}:/data
       - ${WEKA_RESULT_DIR:-.}:/result
       - ${WEKA_JAR_DIR:-.}:/jars
-    runtime: nvidia         
   hsqldb:
     image: blacklabelops/hsqldb
     ports:
