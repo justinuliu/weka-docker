@@ -23,6 +23,3 @@ sudo apt-get -y update
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose
 
 sudo docker-compose build
-
-xhost +local:root
-sudo docker-compose up
