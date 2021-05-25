@@ -6,6 +6,7 @@
 #define MyAppPublisher "The University of Waikato"
 #define MyAppURL "https://www.cs.waikato.ac.nz/ml/weka/"
 #define MyAppExeName "startup.ps1"
+#define MyAppIcoName "weka.ico"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -22,18 +23,19 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\User\Desktop\weka\installer\output
+OutputDir=C:\output
 OutputBaseFilename=wekasetup
-SetupIconFile=C:\Users\User\Desktop\weka\weka.ico
+SetupIconFile=
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+;Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checked
 
 [Files]
 Source: "install.ps1"; DestDir: "{tmp}"
@@ -44,14 +46,18 @@ Source: "docker-compose.env"; DestDir: "{app}"
 Source: "Dockerfile"; DestDir: "{app}"
 Source: "README.md"; DestDir: "{app}"
 Source: "hsqldb.jar"; DestDir: "{app}" 
+Source: "weka.ico"; DestDir: "{app}" 
 
 
 [Icons]
-Name: "{autodesktop}\{#MyAppName}"; Filename: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"; Tasks: desktopicon; Parameters: "-noexit -ExecutionPolicy Bypass -file ""{app}\{#MyAppExeName}"""; WorkingDir: "{app}" 
+Name: "{commondesktop}\{#MyAppName}"; Filename: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"; IconFilename: "{app}\{#MyAppIcoName}"; Parameters: "-noexit -ExecutionPolicy Bypass -file ""{app}\{#MyAppExeName}"""; WorkingDir: "{app}" 
+Name: "{app}\{#MyAppName}"; Filename: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"; IconFilename: "{app}\{#MyAppIcoName}"; Parameters: "-noexit -ExecutionPolicy Bypass -file ""{app}\{#MyAppExeName}"""; WorkingDir: "{app}" 
+Name: "{commonprograms}\{#MyAppName}"; Filename: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"; IconFilename: "{app}\{#MyAppIcoName}"; Parameters: "-noexit -ExecutionPolicy Bypass -file ""{app}\{#MyAppExeName}"""; WorkingDir: "{app}" 
+Name: "{group}\{#MyAppName}"; Filename: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"; IconFilename: "{app}\{#MyAppIcoName}"; Parameters: "-noexit -ExecutionPolicy Bypass -file ""{app}\{#MyAppExeName}"""; WorkingDir: "{app}" 
 
-;[Run]
-;Filename: "powershell.exe"; \
-;  Parameters: "-ExecutionPolicy Bypass -File ""{tmp}\install.ps1"""; \
-;  WorkingDir: {app};
+[Run]
+Filename: "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"; \
+  Parameters: "-ExecutionPolicy Bypass -File ""{tmp}\install.ps1"""; \
+  WorkingDir: {app};
 
 
