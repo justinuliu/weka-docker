@@ -13,4 +13,5 @@ RUN jre/*/bin/java -classpath ./weka.jar weka.core.WekaPackageManager -install-p
 RUN wget https://github.com/Waikato/wekaDeeplearning4j/releases/download/v1.7.1/install-cuda-libs.sh \
     && bash install-cuda-libs.sh
 RUN jre/*/bin/java -classpath ./weka.jar weka.core.WekaPackageManager -install-package Auto-WEKA
+RUN jre/*/bin/java -classpath ./weka.jar weka.core.WekaPackageManager -install-package massiveOnlineAnalysis
 CMD jre/*/bin/java -classpath ./weka.jar:/jars/* weka.gui.GUIChooser
