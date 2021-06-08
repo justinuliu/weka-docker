@@ -16,7 +16,7 @@ startup_mac(){
     ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
     DISPLAY=$ip:0
     xhost + $ip
-    sudo docker-compose up
+    docker-compose up
 }
 
 unameOut="$(uname -s)"
