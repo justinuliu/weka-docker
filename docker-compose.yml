@@ -12,14 +12,4 @@ services:
       - ${WEKA_DATA_DIR:-.}:/data
       - ${WEKA_RESULT_DIR:-.}:/result
       - ${WEKA_JAR_DIR:-.}:/jars
-  hsqldb:
-    image: blacklabelops/hsqldb
-    ports:
-    - "9001:9001"
-    volumes:
-      - /opt/database
-    env_file: 
-      - docker-compose.env
-    labels:
-      com.blacklabelops.description: "HSQL Development System"
-      com.blacklabelops.service: "hsqldb-server"
+
