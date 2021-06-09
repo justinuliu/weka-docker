@@ -9,7 +9,7 @@ services:
       - CLASSPATH=${WEKA_CLASSPATH}
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${WEKA_DATA_DIR:-.}:/data
-      - ${WEKA_RESULT_DIR:-.}:/result
-      - ${WEKA_JAR_DIR:-.}:/jars
+      - ${WEKA_DATA_DIR:-~/}:/data
+      - ${WEKA_RESULT_DIR:-~/}:/result
+      - ${WEKA_JAR_DIR:-~/}:/jars
 
