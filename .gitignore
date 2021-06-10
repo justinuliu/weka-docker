@@ -1,3 +1,4 @@
 wekasetup.exe
 *.app
 .DS_Store
+weka-docker-osx-installer.pkg
